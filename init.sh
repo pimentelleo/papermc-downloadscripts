@@ -12,4 +12,8 @@ buildNumber=$(echo $query | jq -r '.builds[-1].build')
 
 fileName=$(echo $query | jq -r '.builds[-1].downloads.application.name')
 
-wget https://api.papermc.io/v2/projects/paper/versions/$projectVersion/builds/$buildNumber/downloads/$fileName
+wget -O paper.jar https://api.papermc.io/v2/projects/paper/versions/$projectVersion/builds/$buildNumber/downloads/$fileName
+
+sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 17666 -j ACCEPT
+sudo iptables -I INPUT 6 -m state --state NEW -p udp --dport 19666 -j ACCEPT
+sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 80 -j ACCEPT
