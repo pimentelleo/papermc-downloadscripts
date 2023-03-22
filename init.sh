@@ -4,7 +4,7 @@ sudo apt update
 sudo apt install openjdk-18-jre-headless jq
 
 
-query=$(curl https://api.papermc.io/v2/projects/paper/versions/1.19/builds)
+query=$(curl https://api.papermc.io/v2/projects/paper/versions/1.19.4/builds)
 
 projectVersion=$(echo $query | jq -r '.version')
 
